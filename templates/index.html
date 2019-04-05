@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+        <form action='/welcome-user' method='post'>
+            <label>
+                Username:
+                <input type='text' name='user'/>
+            </label> <br>
+            <label>
+                Password:
+                <input type='text' name='pass'/>
+            </label> <br>
+            <label>
+                Verify Password:
+                <input type='text' name='ver_pass'/>
+            </label> <br>
+            <label>
+                Email (optional):
+                <input type='text' name='email'/>
+            </label> <br>
+            <input type='submit' value='Submit'/>
+        </form>
+    {% endblock %}
