@@ -1,23 +1,39 @@
 {% extends 'base.html' %}
 
     {% block content %}
-        <form action='/welcome-user' method='post'>
+        <form action='/validate-signup' method='post'>
             <label>
                 Username:
                 <input type='text' name='user'/>
-            </label> <br>
+            </label> 
+            <span class='error'>{{ u_error }}</span>
+            
+            <br>
+
             <label>
                 Password:
                 <input type='text' name='pass'/>
-            </label> <br>
+            </label> 
+            <span class='error'>{{ p_error }}</span>
+
+            <br>
+
             <label>
                 Verify Password:
                 <input type='text' name='ver_pass'/>
-            </label> <br>
+            </label> 
+            <span class='error'>{{ vp_error }}</span>
+
+            <br>
+
             <label>
                 Email (optional):
                 <input type='text' name='email'/>
-            </label> <br>
+            </label> 
+            <span class='error'>{{ e_error }}</span>
+
+            <br>
+
             <input type='submit' value='Submit'/>
         </form>
     {% endblock %}
