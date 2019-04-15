@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect, render_template
+from validate_email import validate_email
 import cgi
 
 app = Flask(__name__)
@@ -34,7 +35,6 @@ def validate_signup():
         else: 
                 if len(user) < 3 or len(user) > 20:
                         user_error = 'The username needs to be between 3-20 characters. Try again.'
-                        user = ''
 
         if not passwd:
                 passwd_error = 'You need to enter a password. Try again.'
@@ -54,11 +54,15 @@ def validate_signup():
                 elif len(ver_passwd) < 3 or len(ver_passwd) > 20:
                         ver_passwd_error = 'The password needs to be between 3-20 characters. Try again.'
                         ver_passwd = ''
-                
-        
-        
-        return render_template('index.html', u_error = user_error, p_error = passwd_error, vp_error = ver_passwd_error, e_error = email_error)
 
+        if email:
+                if not validate_email(email):
+                        email_error = 'The email you entered was invalid. Try again.'
+                
+        if user_error or passwd_error or ver_passwd_error or email_error:
+                return render_template('index.html', u_error = user_error, p_error = passwd_error, vp_error = ver_passwd_error, e_error = email_error, user = user, email = email)
+        else:
+                return welcome_user()
 
 
 

@@ -4,7 +4,7 @@
         <form action='/validate-signup' method='post'>
             <label>
                 Username:
-                <input type='text' name='user'/>
+                <input type='text' name='user' placeholder="{{user}}"/>
             </label> 
             <span class='error'>{{ u_error }}</span>
             
@@ -28,7 +28,7 @@
 
             <label>
                 Email (optional):
-                <input type='text' name='email'/>
+                <input type='text' name='email' placeholder="{{email}}"/>
             </label> 
             <span class='error'>{{ e_error }}</span>
 
